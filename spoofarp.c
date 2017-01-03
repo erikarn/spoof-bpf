@@ -13,6 +13,15 @@
 #include <netinet/if_ether.h>
 #include <net/ethernet.h>
 
+/*
+ * This is a simple arp spoofer, based on the dsniff arpspoof source,
+ * but heavily curtailed.
+ *
+ * However, it is designed to fill forwarding tables in switches, not
+ * redirect traffic towards us.  Thus, it sends 1000 frames a second
+ * from random IP + random MAC, to random IP + broadcast MAC.
+ */
+
 static int verbose = 0;
 
 static void
